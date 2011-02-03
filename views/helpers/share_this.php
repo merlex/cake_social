@@ -145,7 +145,8 @@ class ShareThisHelper extends AppHelper {
 		if ($options['sharethis']) {
 			$result .= $this->socialType('sharethis');
 		}
-		$this->_scripts($options, $types);
+		$this->_scripts($options);
+		$this->_ya_scripts($types);
 		return $result;
 	}
 
@@ -183,12 +184,20 @@ class ShareThisHelper extends AppHelper {
  * @param array $options Options
  * @return void
  */
-	public function _scripts($options = array(),$types = array()) {
+	public function _scripts($options = array()) {
 		$options = array_merge($this->_options, $options);
 		$this->Html->script($options['buttonJs'], array('inline' => false));
 		$this->Html->ScriptBlock(sprintf(
 			'stLight.options({publisher:\'%s\', embeds:%s});', $options['publisher'], $options['embeds']
 		), array('inline' => false));
+	}
+/**
+ * Generate required Javascript
+ *
+ * @param array $types Types
+ * @return void
+ */
+	public function _ya_scripts($types = array()) {
                 if(is_array($types)&&count($types))
                 {
                     $src = '';
