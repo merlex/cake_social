@@ -65,6 +65,14 @@ class ShareThisHelper extends AppHelper {
 		'xanga',
 		'yahoo_bmarks', 'ybuzz', 'yigg',
 	);
+/**
+ * Russian Social Media Types
+ *
+ * @var array
+ */
+	protected $_rutypes = array(
+		'yaru','moikrug', 'moimir', 'odnoklassniki', 'vkontakte',
+	);
 
 /**
  * Allowed styles
@@ -93,7 +101,7 @@ class ShareThisHelper extends AppHelper {
 	protected $_options = array(
 		'sharethis' => true,
 		'publisher' => '',
-		'buttonJs' => 'http://w.sharethis.com/button/buttons.js',
+		'buttonJs' => array('http://w.sharethis.com/button/buttons.js','http://yandex.st/share/share.js'),
 		'style' => '',
 		'embeds' => 'true'
 	);
@@ -137,7 +145,7 @@ class ShareThisHelper extends AppHelper {
 		if ($options['sharethis']) {
 			$result .= $this->socialType('sharethis');
 		}
-		$this->_scripts($options);
+		$this->_scripts($options, $types);
 		return $result;
 	}
 
@@ -149,7 +157,14 @@ class ShareThisHelper extends AppHelper {
  */
 	public function socialType($type, $options = array()) {
 		$options = array_merge($this->_options, $options);
-		$attributes = array('class' => 'st_' . $type);
+                if(in_array($type, $this->_rutypes))
+                {
+                    $attributes = array('class' => 'ya_' . $type,'id' => 'ya_' . $type);
+                }
+                else
+                {
+                    $attributes = array('class' => 'st_' . $type);
+                }
 		if (in_array($options['style'], $this->_styles)) {
 			$attributes['class'] .= '_' . $options['style'];
 		}
@@ -168,11 +183,28 @@ class ShareThisHelper extends AppHelper {
  * @param array $options Options
  * @return void
  */
-	public function _scripts($options = array()) {
+	public function _scripts($options = array(),$types = array()) {
 		$options = array_merge($this->_options, $options);
 		$this->Html->script($options['buttonJs'], array('inline' => false));
 		$this->Html->ScriptBlock(sprintf(
 			'stLight.options({publisher:\'%s\', embeds:%s});', $options['publisher'], $options['embeds']
 		), array('inline' => false));
+                if(is_array($types)&&count($types))
+                {
+                    $src = '';
+                    foreach ($types as $type)
+                    {
+                        if(in_array($type, $this->_rutypes))
+                        {
+                            $src .= sprintf(
+                                    'Ya.share({element: \'ya_%s\',elementStyle: {\'quickServices\': [\'%s\']},onready: function(instance) {$(\'#ya_%s .b-share__handle\').first().remove();}});', $type, $type, $type
+                            );
+                        }
+                    }
+                    if($src)
+                    {
+                        $this->Html->ScriptBlock($src, array('inline' => false));
+                    }
+                }
 	}
 }
