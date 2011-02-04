@@ -71,7 +71,11 @@ class ShareThisHelper extends AppHelper {
  * @var array
  */
 	protected $_rutypes = array(
-		'yaru','moikrug', 'moimir', 'odnoklassniki', 'vkontakte',
+            'yandex'=>'http://my.ya.ru/posts_add_link.xml?URL=%s&title=%s',
+            'moikrug'=>'http://moikrug.ru/share?url=%s&title=%s',
+            'moimir'=>'http://connect.mail.ru/share?url=%s&title=%s',
+            'odnoklassniki'=>'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.surl=%s&title=%s',
+            'vkontakte'=>'http://vkontakte.ru/share.php?url=%s&title=%s',
 	);
 
 /**
@@ -101,7 +105,7 @@ class ShareThisHelper extends AppHelper {
 	protected $_options = array(
 		'sharethis' => true,
 		'publisher' => '',
-		'buttonJs' => array('http://w.sharethis.com/button/buttons.js','http://yandex.st/share/share.js'),
+		'buttonJs' => 'http://w.sharethis.com/button/buttons.js',
 		'style' => '',
 		'embeds' => 'true'
 	);
@@ -146,7 +150,6 @@ class ShareThisHelper extends AppHelper {
 			$result .= $this->socialType('sharethis');
 		}
 		$this->_scripts($options);
-		$this->_ya_scripts($types, $options);
 		return $result;
 	}
 
@@ -158,9 +161,42 @@ class ShareThisHelper extends AppHelper {
  */
 	public function socialType($type, $options = array()) {
 		$options = array_merge($this->_options, $options);
-                if(in_array($type, $this->_rutypes))
+                $innerText = '';
+                if(isset($this->_rutypes[$type]))
                 {
-                    $attributes = array('class' => 'ya_' . $type,'id' => 'ya_' . $type);
+                    $attributes = array('class'=>$type,'id' => 'ya_' . $type);
+                    if (in_array($options['style'], $this->_styles)) {
+                            $attributes['class'] .= '_'.$options['style'];
+                    }
+                    else
+                    {}
+                    if (!empty($options['url'])) {
+                        $url = $this->url($options['url'], true);
+                    }
+                    else
+                    {
+                        $url = $this->url();
+                    }
+                    if (!empty($options['title'])) {
+                        $title = $options['title'];
+                    }
+                    else
+                    {
+                        $title = Configure::read('title');
+                    }
+                    $innerText = $this->Html->tag('a',
+                            $this->Html->tag('span',
+                                             null,
+                                             array('class'=>(!empty($options['style'])?('st'.$options['style']):('chicklets')),
+                                                   'style'=>'background-image: url('.$this->Html->url('/cake_social/img/'.$attributes['class'].'.png').');'
+                                                  )),
+                            array(
+                            'style'=>'text-decoration:none;color:#000000;display:inline-block;cursor:pointer;',
+                            'class'=>'stButton',
+                            'href'=>  sprintf($this->_rutypes[$type],$url,$title),
+                            'target'=>'_blank'
+                            )
+                        );
                 }
                 else
                 {
@@ -175,7 +211,7 @@ class ShareThisHelper extends AppHelper {
                             $attributes['st_title'] = $options['title'];
                     }
                 }
-		return $this->Html->tag('span', '', $attributes);
+		return $this->Html->tag('span', $innerText, $attributes);
 	}
 
 /**
@@ -190,30 +226,5 @@ class ShareThisHelper extends AppHelper {
 		$this->Html->ScriptBlock(sprintf(
 			'stLight.options({publisher:\'%s\', embeds:%s});', $options['publisher'], $options['embeds']
 		), array('inline' => false));
-	}
-/**
- * Generate required Javascript
- *
- * @param array $types Types
- * @return void
- */
-	public function _ya_scripts($types = array(),$options = array()) {
-                if(is_array($types)&&count($types))
-                {
-                    $src = '';
-                    foreach ($types as $type)
-                    {
-                        if(in_array($type, $this->_rutypes))
-                        {
-                            $src .= sprintf(
-                                    'Ya.share({element: \'ya_%s\',elementStyle: {\'quickServices\': [\'%s\']},title:\'%s\',url:\'%s\',onready: function(instance) {$(\'#ya_%s .b-share__handle\').first().remove();}});', $type, $type, !empty ($options['title'])?($options['title']):(''), !empty ($options['url'])?($this->url($options['url'], true)):(''), $type
-                            );
-                        }
-                    }
-                    if($src)
-                    {
-                        $this->Html->ScriptBlock($src, array('inline' => false));
-                    }
-                }
 	}
 }
