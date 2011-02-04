@@ -146,7 +146,7 @@ class ShareThisHelper extends AppHelper {
 			$result .= $this->socialType('sharethis');
 		}
 		$this->_scripts($options);
-		$this->_ya_scripts($types);
+		$this->_ya_scripts($types, $options);
 		return $result;
 	}
 
@@ -165,16 +165,16 @@ class ShareThisHelper extends AppHelper {
                 else
                 {
                     $attributes = array('class' => 'st_' . $type);
+                    if (in_array($options['style'], $this->_styles)) {
+                            $attributes['class'] .= '_' . $options['style'];
+                    }
+                    if (!empty($options['url'])) {
+                            $attributes['st_url'] = $this->url($options['url'], true);
+                    }
+                    if (!empty($options['title'])) {
+                            $attributes['st_title'] = $options['title'];
+                    }
                 }
-		if (in_array($options['style'], $this->_styles)) {
-			$attributes['class'] .= '_' . $options['style'];
-		}
-		if (!empty($options['url'])) {
-			$attributes['st_url'] = $this->url($options['url'], true);
-		}
-		if (!empty($options['title'])) {
-			$attributes['st_title'] = $options['title'];
-		}
 		return $this->Html->tag('span', '', $attributes);
 	}
 
@@ -197,7 +197,7 @@ class ShareThisHelper extends AppHelper {
  * @param array $types Types
  * @return void
  */
-	public function _ya_scripts($types = array()) {
+	public function _ya_scripts($types = array(),$options = array()) {
                 if(is_array($types)&&count($types))
                 {
                     $src = '';
@@ -206,7 +206,7 @@ class ShareThisHelper extends AppHelper {
                         if(in_array($type, $this->_rutypes))
                         {
                             $src .= sprintf(
-                                    'Ya.share({element: \'ya_%s\',elementStyle: {\'quickServices\': [\'%s\']},onready: function(instance) {$(\'#ya_%s .b-share__handle\').first().remove();}});', $type, $type, $type
+                                    'Ya.share({element: \'ya_%s\',elementStyle: {\'quickServices\': [\'%s\']},title:\'%s\',url:\'%s\',onready: function(instance) {$(\'#ya_%s .b-share__handle\').first().remove();}});', $type, $type, !empty ($options['title'])?($options['title']):(''), !empty ($options['url'])?($this->url($options['url'], true)):(''), $type
                             );
                         }
                     }
