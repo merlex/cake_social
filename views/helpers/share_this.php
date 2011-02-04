@@ -164,7 +164,7 @@ class ShareThisHelper extends AppHelper {
                 $innerText = '';
                 if(isset($this->_rutypes[$type]))
                 {
-                    $attributes = array('class'=>$type,'id' => 'ya_' . $type);
+                    $attributes = array('class'=>$type);
                     if (in_array($options['style'], $this->_styles)) {
                             $attributes['class'] .= '_'.$options['style'];
                     }
