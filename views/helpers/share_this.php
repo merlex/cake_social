@@ -144,10 +144,10 @@ class ShareThisHelper extends AppHelper {
 		$options = array_merge($this->_options, $options);
 		$result = '';
 		foreach ($types as $type) {
-			$result .= $this->socialType($type);
+			$result .= $this->socialType($type,$options);
 		}
 		if ($options['sharethis']) {
-			$result .= $this->socialType('sharethis');
+			$result .= $this->socialType('sharethis',$options);
 		}
 		$this->_scripts($options);
 		return $result;
@@ -175,7 +175,7 @@ class ShareThisHelper extends AppHelper {
                     }
                     else
                     {
-                        $url = $this->url();
+                        $url = $this->url(null, true);
                     }
                     if (!empty($options['title'])) {
                         $title = $options['title'];
@@ -187,7 +187,7 @@ class ShareThisHelper extends AppHelper {
                     $innerText = $this->Html->tag('a',
                             $this->Html->tag('span',
                                              null,
-                                             array('class'=>(!empty($options['style'])?('st'.$options['style']):('chicklets')),
+                                             array('class'=>(!empty($options['style'])?('st'.ucfirst($options['style'])):('chicklets')),
                                                    'style'=>'background-image: url('.$this->Html->url('/cake_social/img/'.$attributes['class'].'.png').');'
                                                   )),
                             array(
@@ -226,5 +226,6 @@ class ShareThisHelper extends AppHelper {
 		$this->Html->ScriptBlock(sprintf(
 			'stLight.options({publisher:\'%s\', embeds:%s});', $options['publisher'], $options['embeds']
 		), array('inline' => false));
-	}
+                $this->Html->css('/cake_social/css/cake_social',null, array('inline' => false));
+                }
 }
