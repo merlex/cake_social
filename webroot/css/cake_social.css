@@ -1,0 +1,45 @@
+.moimir_button .stButton{
+    display: block;
+    width: 97px;
+    height: 17px;
+    margin-bottom: -5px;
+}
+.moimir .chicklets{
+    margin-bottom: -4px;
+}
+.odnoklassniki_button .stButton{
+    display: block;
+    width: 56px;
+    height: 17px;
+    margin-bottom: -5px;
+}
+.odnoklassniki .chicklets{
+    margin-bottom: -4px;
+}
+.vkontakte_button .stButton{
+    display: block;
+    width: 66px;
+    height: 17px;
+    margin-bottom: -5px;
+}
+.vkontakte .chicklets{
+    margin-bottom: -4px;
+}
+.yandex_button .stButton{
+    display: block;
+    width: 90px;
+    height: 17px;
+    margin-bottom: -5px;
+}
+.yandex .chicklets{
+    margin-bottom: -4px;
+}
+.moikrug_button .stButton{
+    display: block;
+    width: 90px;
+    height: 17px;
+    margin-bottom: -5px;
+}
+.moikrug .chicklets{
+    margin-bottom: -4px;
+}
