@@ -66,7 +66,7 @@ class ShareThisHelper extends AppHelper {
 		'yahoo_bmarks', 'ybuzz', 'yigg',
 	);
 /**
- * Russian Social Media Types
+ * Russian Social Media Types and share urls
  *
  * @var array
  */
