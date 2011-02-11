@@ -1,45 +1,65 @@
-.moimir_button .stButton{
+.ru_moimir_button .ruButton{
     display: block;
     width: 97px;
     height: 17px;
     margin-bottom: -5px;
 }
-.moimir .chicklets{
+.ru_moimir .chicklets{
     margin-bottom: -4px;
 }
-.odnoklassniki_button .stButton{
+.ru_odnoklassniki_button .ruButton{
     display: block;
     width: 56px;
     height: 17px;
     margin-bottom: -5px;
 }
-.odnoklassniki .chicklets{
+.ru_odnoklassniki .chicklets{
     margin-bottom: -4px;
 }
-.vkontakte_button .stButton{
+.ru_vkontakte_button .ruButton{
     display: block;
     width: 66px;
     height: 17px;
     margin-bottom: -5px;
 }
-.vkontakte .chicklets{
+.ru_vkontakte .chicklets{
     margin-bottom: -4px;
 }
-.yandex_button .stButton{
+.ru_yandex_button .ruButton{
     display: block;
     width: 90px;
     height: 17px;
     margin-bottom: -5px;
 }
-.yandex .chicklets{
+.ru_yandex .chicklets{
     margin-bottom: -4px;
 }
-.moikrug_button .stButton{
+.ru_moikrug_button .ruButton{
     display: block;
     width: 90px;
     height: 17px;
     margin-bottom: -5px;
 }
-.moikrug .chicklets{
+.ru_moikrug .chicklets{
     margin-bottom: -4px;
+}
+.ruButton
+{
+    margin-right: 3px;
+    margin-left: 3px;
+}
+.ruButton .chicklets
+{
+    padding-left: 16px;
+    white-space: nowrap;
+    font-family: Verdana,Helvetica,sans-serif;
+    font-size: 11px;
+    height: 16px;
+    display: inline-block;
+    line-height: 16px;
+}
+.ruButton .ruLarge {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
 }

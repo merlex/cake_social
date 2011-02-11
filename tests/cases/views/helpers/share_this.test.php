@@ -10,7 +10,7 @@
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::import('Helper', array('CakeSocial.CakeSocial', 'Html'));
+App::import('Helper', array('CakeSocial.ShareThis', 'Html'));
 
 /**
  * TheJsTestController class
@@ -54,13 +54,13 @@ class TheView extends View {
 }
 
 /**
- * CakeSocial Test Case
+ * ShareThis Test Case
  *
  * @package cake_social
  * @subpackage cake_social.tests.views.helpers
  * @author Graham Weldon (http://grahamweldon.com)
  */
-class CakeSocialHelperTestCase extends CakeTestCase {
+class ShareThisHelperTestCase extends CakeTestCase {
 
 /**
  * Start Test
@@ -70,8 +70,8 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function startTest() {
-		$this->CakeSocial = new CakeSocialHelper();
-		$this->CakeSocial->Html = new HtmlHelper();
+		$this->ShareThis = new ShareThisHelper();
+		$this->ShareThis->Html = new HtmlHelper();
 		$this->View =& new TheView(new TheJsTestController());
 		ClassRegistry::addObject('view', $this->View);
 	}
@@ -84,7 +84,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function endTest() {
-		unset($this->CakeSocial);
+		unset($this->ShareThis);
 		ClassRegistry::removeObject('view');
 		unset($this->View);
 	}
@@ -96,7 +96,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  */
 	public function testSocialType() {
 		$expected = '<span class="st_test"></span>';
-		$result = $this->CakeSocial->socialType('test');
+		$result = $this->ShareThis->socialType('test');
 		$this->assertIdentical($expected, $result);
 	}
 
@@ -107,7 +107,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  */
 	public function testSocialTypeStyleLarge() {
 		$expected = '<span class="st_test_large"></span>';
-		$result = $this->CakeSocial->socialType('test', array('style' => 'large'));
+		$result = $this->ShareThis->socialType('test', array('style' => 'large'));
 		$this->assertIdentical($expected, $result);
 	}
 
@@ -118,7 +118,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  */
 	public function testSocialTypeStyleButton() {
 		$expected = '<span class="st_test_button"></span>';
-		$result = $this->CakeSocial->socialType('test', array('style' => 'button'));
+		$result = $this->ShareThis->socialType('test', array('style' => 'button'));
 		$this->assertIdentical($expected, $result);
 	}
 
@@ -129,7 +129,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  */
 	public function testSocialTypeStyleCustomPage() {
 		$expected = '<span class="st_test" st_url="http://example.com" st_title="42"></span>';
-		$result = $this->CakeSocial->socialType(
+		$result = $this->ShareThis->socialType(
 			'test',
 			array('url' => 'http://example.com', 'title' => 42));
 		$this->assertIdentical($expected, $result);
@@ -141,7 +141,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testScripts() {
-		$this->CakeSocial->display();
+		$this->ShareThis->display();
 		$result = $this->View->scripts();
 		foreach ($result as &$script) {
 			$script = str_replace("\n", '', $script);
@@ -149,7 +149,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
 		$this->assertIdentical(
 			$result,
 			array(
-				'<script type="text/javascript" src="http://w.CakeSocial.com/button/buttons.js"></script>',
+				'<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>',
 				'<script type="text/javascript">//<![CDATA[stLight.options({publisher:\'\', embeds:true});//]]></script>'
 			)
 		);
@@ -161,7 +161,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testPublisherScripts() {
-		$this->CakeSocial->display(array(), array('publisher' => 'Mr. Man'));
+		$this->ShareThis->display(array(), array('publisher' => 'Mr. Man'));
 		$result = $this->View->scripts();
 		foreach ($result as &$script) {
 			$script = str_replace("\n", '', $script);
@@ -169,7 +169,7 @@ class CakeSocialHelperTestCase extends CakeTestCase {
 		$this->assertIdentical(
 			$result,
 			array(
-				'<script type="text/javascript" src="http://w.CakeSocial.com/button/buttons.js"></script>',
+				'<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>',
 				'<script type="text/javascript">//<![CDATA[stLight.options({publisher:\'Mr. Man\', embeds:true});//]]></script>'
 			)
 		);
@@ -181,8 +181,8 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testDefault() {
-		$expected = '<span class="st_twitter"></span><span class="st_facebook"></span><span class="st_ybuzz"></span><span class="st_gbuzz"></span><span class="st_email"></span><span class="st_CakeSocial"></span>';
-		$result = $this->CakeSocial->display();
+		$expected = '<span class="st_twitter"></span><span class="st_facebook"></span><span class="st_ybuzz"></span><span class="st_gbuzz"></span><span class="st_email"></span><span class="st_sharethis"></span>';
+		$result = $this->ShareThis->display();
 		$this->assertIdentical($expected, $result);
 	}
 
@@ -192,19 +192,19 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testSingle() {
-		$expected = '<span class="st_twitter"></span><span class="st_CakeSocial"></span>';
-		$result = $this->CakeSocial->display(array('twitter'));
+		$expected = '<span class="st_twitter"></span><span class="st_sharethis"></span>';
+		$result = $this->ShareThis->display(array('twitter'));
 		$this->assertIdentical($expected, $result);
 	}
 
 /**
- * testNoCakeSocial
+ * testNoShareThis
  *
  * @return void
  */
-	public function testNoCakeSocial() {
+	public function testNoShareThis() {
 		$expected = '<span class="st_twitter"></span><span class="st_facebook"></span><span class="st_ybuzz"></span><span class="st_gbuzz"></span><span class="st_email"></span>';
-		$result = $this->CakeSocial->display(array(), array('CakeSocial' => false));
+		$result = $this->ShareThis->display(array(), array('sharethis' => false));
 		$this->assertIdentical($expected, $result);
 	}
 
@@ -214,8 +214,8 @@ class CakeSocialHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testNonArrayTypes() {
-		$expected = '<span class="st_CakeSocial"></span>';
-		$result = $this->CakeSocial->display(null);
+		$expected = '<span class="st_sharethis"></span>';
+		$result = $this->ShareThis->display(null);
 		$this->assertIdentical($expected, $result);
 	}
 }
