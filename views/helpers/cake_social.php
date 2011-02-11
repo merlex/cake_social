@@ -18,7 +18,7 @@
  * @package default
  * @subpackage cake_social.views.helpers
  */
-class ShareThisHelper extends AppHelper {
+class CakeSocialHelper extends AppHelper {
 
 /**
  * View helpers
