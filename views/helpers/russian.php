@@ -1,19 +1,19 @@
 <?php
 /**
- * Copyright 2010, Graham Weldon (http://grahamweldon.com)
+ * Copyright 2011, Alexandr Merekin
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @author Graham Weldon (http://grahamweldon.com)
- * @copyright Copyright 2010, Graham Weldon (http://grahamweldon.com)
+ * @author Alexandr Merekin
+ * @copyright Copyright 2011, Alexandr Merekin
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
 /**
- * ShareThis Helper
+ * Russian Helper
  *
- * Useful view helper for the ShareThis service
+ * Useful view helper for the Russian Social service
  *
  * @package default
  * @subpackage cake_social.views.helpers
@@ -65,9 +65,6 @@ class RussianHelper extends AppHelper {
  *
  * ### Options
  *
- * - `sharethis` (boolean) Include the 'sharethis' button with the social type set. Default: true
- * - `publisher` (string) Your publisher ID obtained from [ShareThis](http://sharethis.com)
- * - `buttonJs` (string) URL to the Javascript for the ShareThis button
  * - `style` (string) Style type to use: (none) is default, 'large', or 'button'
  *
  * @var array
@@ -79,11 +76,9 @@ class RussianHelper extends AppHelper {
 /**
  * Constructor
  *
- * Takes options to configure instance variables like publisher
+ * Takes options to configure instance variables
  *
  * ### Options
- *
- * - `publisher` (string) Publisher key from [ShareThis](http://sharethis.com)
  *
  * @param array $options 
  */
@@ -92,7 +87,7 @@ class RussianHelper extends AppHelper {
 	}
 
 /**
- * Display the ShareThis widget
+ * Display the Russian widget
  *
  * @param array $types Social Media types (See ShareThisHelper::$_types)
  * @param array $options Display options (See ShareThisHelper::$_options)
@@ -150,7 +145,7 @@ class RussianHelper extends AppHelper {
                                            'style'=>'background-image: url('.$this->Html->url('/cake_social/img/'.str_replace('ru_', '', $attributes['class']).'.png').');'
                                           )),
                     array(
-                    'style'=>'text-decoration:none;color:#000000;display:inline-block;cursor:pointer;',
+                    'style'=>'text-decoration:none;color:#000000;display:inline;cursor:pointer;margin-right:5px;',
                     'class'=>'ruButton',
                     'href'=>  isset($this->_types[$type])?sprintf($this->_types[$type], $url, $title):'',
                     'target'=>'_blank'
@@ -160,7 +155,7 @@ class RussianHelper extends AppHelper {
 	}
 
 /**
- * Generate required Javascript
+ * Generate required CSS
  *
  * @param array $options Options
  * @return void

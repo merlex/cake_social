@@ -1,52 +1,52 @@
 .ru_moimir_button .ruButton{
-    display: block;
+    display: inline-block;
     width: 97px;
     height: 17px;
     margin-bottom: -5px;
 }
 .ru_moimir .chicklets{
-    margin-bottom: -4px;
+    margin-bottom: -3px;
 }
 .ru_odnoklassniki_button .ruButton{
-    display: block;
+    display: inline-block;
     width: 56px;
     height: 17px;
     margin-bottom: -5px;
 }
 .ru_odnoklassniki .chicklets{
-    margin-bottom: -4px;
+    margin-bottom: -3px;
 }
 .ru_vkontakte_button .ruButton{
-    display: block;
+    display: inline-block;
     width: 66px;
     height: 17px;
     margin-bottom: -5px;
 }
 .ru_vkontakte .chicklets{
-    margin-bottom: -4px;
+    margin-bottom: -3px;
 }
 .ru_yandex_button .ruButton{
-    display: block;
+    display: inline-block;
     width: 90px;
     height: 17px;
     margin-bottom: -5px;
 }
 .ru_yandex .chicklets{
-    margin-bottom: -4px;
+    margin-bottom: -3px;
 }
 .ru_moikrug_button .ruButton{
-    display: block;
+    display: inline-block;
     width: 90px;
     height: 17px;
     margin-bottom: -5px;
 }
 .ru_moikrug .chicklets{
-    margin-bottom: -4px;
+    margin-bottom: -3px;
 }
 .ruButton
 {
     margin-right: 3px;
-    margin-left: 3px;
+    margin-left: 1px;
 }
 .ruButton .chicklets
 {

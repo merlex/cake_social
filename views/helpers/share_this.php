@@ -18,7 +18,6 @@
  * 	* Removed option parametar 'sharethis'. Implementation was buggy, and same can be acomplished by treating sharethis as any other provider (eg. facebook, twitter, etc...). In this way we can also act upon the order, which is impossible through the former 'sharethis' option.
  * 	* Made some small changes to code (removal of redundant (at least I hope they were) lines)
  */
-
 /**
  * ShareThis Helper
  *
