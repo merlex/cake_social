@@ -95,7 +95,7 @@ class RussianHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testSocialType() {
-		$expected = '<span class="ru_test"><a style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="ruButton" href="" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/test.png);"></a></span>';
+		$expected = '<span class="ru_test"><a style="text-decoration:none;color:#000000;display:inline;cursor:pointer;" class="ruButton" href="" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/test.png);"></a></span>';
 		$result = $this->Russian->socialType('test');
 		$this->assertIdentical($expected, $result);
 	}
@@ -106,7 +106,7 @@ class RussianHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testSocialTypeStyleLarge() {
-		$expected = '<span class="ru_test_large"><a style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="ruButton" href="" target="_blank"><span class="ruLarge" style="background-image: url(/cake/cake_social/img/test_large.png);"></a></span>';
+		$expected = '<span class="ru_test_large"><a style="text-decoration:none;color:#000000;display:inline;cursor:pointer;" class="ruButton" href="" target="_blank"><span class="ruLarge" style="background-image: url(/cake/cake_social/img/test_large.png);"></a></span>';
 		$result = $this->Russian->socialType('test', array('style' => 'large'));
 		$this->assertIdentical($expected, $result);
 	}
@@ -117,7 +117,7 @@ class RussianHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testSocialTypeStyleButton() {
-		$expected = '<span class="ru_test_button"><a style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="ruButton" href="" target="_blank"><span class="ruButton" style="background-image: url(/cake/cake_social/img/test_button.png);"></a></span>';
+		$expected = '<span class="ru_test_button"><a style="text-decoration:none;color:#000000;display:inline;cursor:pointer;" class="ruButton" href="" target="_blank"><span class="ruButton" style="background-image: url(/cake/cake_social/img/test_button.png);"></a></span>';
 		$result = $this->Russian->socialType('test', array('style' => 'button'));
 		$this->assertIdentical($expected, $result);
 	}
@@ -128,7 +128,7 @@ class RussianHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testSocialTypeStyleCustomPage() {
-		$expected = '<span class="ru_test"><a style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="ruButton" href="" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/test.png);"></a></span>';
+		$expected = '<span class="ru_test"><a style="text-decoration:none;color:#000000;display:inline;cursor:pointer;" class="ruButton" href="" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/test.png);"></a></span>';
 		$result = $this->Russian->socialType(
 			'test',
 			array('url' => 'http://example.com', 'title' => 42));
@@ -141,7 +141,7 @@ class RussianHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testDefault() {
-		$expected = '<span class="ru_vkontakte"><a style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="ruButton" href="http://vkontakte.ru/share.php?url=http://example.com&amp;title=42" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/vkontakte.png);"></a></span><span class="ru_odnoklassniki"><a style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="ruButton" href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&amp;st.surl=http://example.com&amp;title=42" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/odnoklassniki.png);"></a></span>';
+		$expected = '<span class="ru_vkontakte"><a style="text-decoration:none;color:#000000;display:inline;cursor:pointer;" class="ruButton" href="http://vkontakte.ru/share.php?url=http://example.com&amp;title=42" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/vkontakte.png);"></a></span><span class="ru_odnoklassniki"><a style="text-decoration:none;color:#000000;display:inline;cursor:pointer;" class="ruButton" href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&amp;st.surl=http://example.com&amp;title=42" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/odnoklassniki.png);"></a></span>';
 		$result = $this->Russian->display();
 		$this->assertIdentical($expected, $result);
 	}
@@ -152,7 +152,7 @@ class RussianHelperTestCase extends CakeTestCase {
  * @return void
  */
 	public function testSingle() {
-		$expected = '<span class="ru_vkontakte"><a style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="ruButton" href="http://vkontakte.ru/share.php?url=http://example.com&amp;title=42" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/vkontakte.png);"></a></span>';
+		$expected = '<span class="ru_vkontakte"><a style="text-decoration:none;color:#000000;display:inline;cursor:pointer;" class="ruButton" href="http://vkontakte.ru/share.php?url=http://example.com&amp;title=42" target="_blank"><span class="chicklets" style="background-image: url(/cake/cake_social/img/vkontakte.png);"></a></span>';
 		$result = $this->Russian->display(array('vkontakte'),
 			array('url' => 'http://example.com', 'title' => 42));
 		$this->assertIdentical($expected, $result);
