@@ -89,8 +89,8 @@ class RussianHelper extends AppHelper {
 /**
  * Display the Russian widget
  *
- * @param array $types Social Media types (See ShareThisHelper::$_types)
- * @param array $options Display options (See ShareThisHelper::$_options)
+ * @param array $types Social Media types (See CakeSocialHelper::$_types)
+ * @param array $options Display options (See CakeSocialHelper::$_options)
  * @return string Html for the ShareThis widget
  */
 	public function display($types = array(), $options = array()) {
@@ -114,7 +114,7 @@ class RussianHelper extends AppHelper {
 /**
  * Generate a single social type span element
  *
- * @param string $type Social type key (See ShareThisHelper::$_types)
+ * @param string $type Social type key (See RussianHelper::$_types)
  * @return string Social Type HTML
  */
 	public function socialType($type, $options = array()) {

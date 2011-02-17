@@ -9,11 +9,11 @@
  * @copyright Copyright 2011, Alexandr Merekin
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-//App::import('Helper', array('CakeSocial.Russian', 'CakeSocial.ShareThis'));
+
 /**
- * Russian Helper
+ * CakeSocial Helper
  *
- * Useful view helper for the Russian Social service
+ * Useful view helper for the Social service
  *
  * @package default
  * @subpackage cake_social.views.helpers
@@ -37,7 +37,7 @@ class CakeSocialHelper extends AppHelper {
 	);
 
 /**
- * Russian Social Media Types and share urls
+ * Russian Social Media Types
  *
  * @var array
  */
@@ -58,20 +58,6 @@ class CakeSocialHelper extends AppHelper {
 		'large',
 		'button',
 	);
-
-/**
- * Russian Helper
- *
- * @var RussianHelper
- */
-	protected $_Russian;
-
-/**
- * ShareThis Helper
- *
- * @var ShareThisHelper
- */
-	protected $_ShareThis;
 
 /**
  * Default options
@@ -100,16 +86,14 @@ class CakeSocialHelper extends AppHelper {
  */
 	public function __construct($options = array()) {
             $this->_options = array_merge($this->_options, $options);
-            //$this->_ShareThis = new ShareThisHelper($this->_options);
-            //$this->_Russian = new RussianHelper($this->_options);
 	}
 
 /**
- * Display the Russian widget
+ * Display share widget
  *
- * @param array $types Social Media types (See ShareThisHelper::$_types)
- * @param array $options Display options (See ShareThisHelper::$_options)
- * @return string Html for the ShareThis widget
+ * @param array $types Social Media types
+ * @param array $options Display options
+ * @return string Html for the CakeSocial widget
  */
 	public function display($types = array(), $options = array()) {
             if (is_array($types)) {
