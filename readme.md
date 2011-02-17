@@ -42,6 +42,9 @@ If you do not have one already, create the file `app_controller.php` in the root
 		public $helpers = array(
 			'CakeSocial.CakeSocial' => array(
 				'publisher' => 'my-publisher-id',
+                                'style'=>'large',
+                                'title'=>'My cool title',
+                                'url'=>'http://example.com'
 			),
 			'Session'
 		);
