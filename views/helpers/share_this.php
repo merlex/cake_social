@@ -177,4 +177,14 @@ class ShareThisHelper extends AppHelper {
 			'stLight.options({publisher:\'%s\', embeds:%s});', $options['publisher'], $options['embeds']
 		), array('inline' => false));
 	}
+	/**
+	 * Check type
+	 *
+	 * @param string $type Type
+	 * @return bool
+	 */
+	public function isSupported($type)
+	{
+		return in_array($type, $this->_types);
+	}
 }

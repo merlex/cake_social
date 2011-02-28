@@ -50,16 +50,6 @@ class CakeSocialHelper extends AppHelper {
 	);
 
 /**
- * Allowed styles
- *
- * @var array
- */
-	protected $_styles = array(
-		'large',
-		'button',
-	);
-
-/**
  * Default options
  *
  * ### Options
@@ -107,11 +97,11 @@ class CakeSocialHelper extends AppHelper {
             $options = array_merge($this->_options, $options);
             $result = '';
             foreach ($types as $type) {
-                if(in_array($type, $this->_types))
+                if($this->Russian->isSupported($type))
                 {
                     $result .= $this->Russian->display(array($type),$options);
                 }
-                else
+                else if($this->ShareThis->isSupported($type))
                 {
                     $result .= $this->ShareThis->display(array($type),$options);
                 }

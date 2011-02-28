@@ -162,5 +162,16 @@ class RussianHelper extends AppHelper {
  */
 	public function _scripts($options = array()) {
             $this->Html->css('/cake_social/css/cake_social',null, array('inline' => false));
-        }
+    }
+
+	/**
+	 * Check type
+	 *
+	 * @param string $type Type
+	 * @return bool
+	 */
+	public function isSupported($type)
+	{
+		return in_array($type, $this->_types);
+	}
 }
