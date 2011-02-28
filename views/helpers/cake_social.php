@@ -37,33 +37,13 @@ class CakeSocialHelper extends AppHelper {
 	);
 
 /**
- * Russian Social Media Types
- *
- * @var array
- */
-	protected $_types = array(
-            'yandex',
-            'moikrug',
-            'moimir',
-            'odnoklassniki',
-            'vkontakte',
-	);
-
-/**
  * Default options
  *
  * ### Options
  *
- * - `style` (string) Style type to use: (none) is default, 'large', or 'button'
- *
  * @var array
  */
-	protected $_options = array(
-		'publisher' => '',
-		'buttonJs' => 'http://w.sharethis.com/button/buttons.js',
-		'style' => '',
-		'embeds' => 'true'
-	);
+	protected $_options = array();
 
 /**
  * Constructor
@@ -75,7 +55,7 @@ class CakeSocialHelper extends AppHelper {
  * @param array $options
  */
 	public function __construct($options = array()) {
-            $this->_options = array_merge($this->_options, $options);
+            $this->_options =  $options;
 	}
 
 /**
